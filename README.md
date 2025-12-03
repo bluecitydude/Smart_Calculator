@@ -17,13 +17,14 @@ Files
 
 Quick start
 
-Link:<a href="https://codepen.io/bluecitydude">Click Here</a><br>
+Link:<a href="https://smartcalculatortej.netlify.app/">Click Here</a><br>
 Usage & Controls
 - Click/tap buttons or type on your keyboard.
 - Keyboard: digits, `+ - * / ^ ( )`, `.` for decimal, `Enter` for equals, `Backspace` for DEL, `Escape` for AC.
 - Press `M+` / `M-` to update memory, `MR` to recall, `MC` to clear memory.
 - Use the theme button (top-right) to toggle light/dark themes.
 - Use the `Clear` button in the History header to clear stored history.
+
 
 
 

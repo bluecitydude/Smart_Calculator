@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root{
+    --bg: #f4f6f8;
+    --card: #ffffff;
+    --muted: #6b7280;
+    --accent: #2563eb;
+    --accent-2: #06b6d4;
+    --surface-2: #eef2ff;
+    --shadow: 0 6px 18px rgba(15,23,42,0.08);
+    --radius: 14px;
+    --btn-radius: 12px;
+    --btn-height: 56px;
+    --gap: 10px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+    margin:0;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    background:var(--bg);
+    color:#0f172a;
+    -webkit-font-smoothing:antialiased;
+}
+
+.app-shell{
+    min-height:100vh;
+    display:flex;
+    gap:24px;
+    align-items:center;
+    justify-content:center;
+    padding:36px;
+}
+
+.calculator-card{
+    width:360px;
+    background:var(--card);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:18px;
+    display:flex;
+    flex-direction:column;
+}
+
+.calc-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:8px;
+}
+.brand{font-weight:700;color:var(--accent)}
+.icon-btn{background:transparent;border:0;font-size:18px;cursor:pointer}
+.mem-indicator{display:inline-block;padding:4px 6px;border-radius:6px;background:var(--surface-2);color:var(--accent-2);font-weight:600;visibility:hidden}
+
+.header-controls{display:flex;align-items:center;gap:8px}
+
+.display-panel{
+    background:linear-gradient(180deg,#f9fafb, #ffffff);
+    border-radius:12px;
+    padding:14px 12px;
+    margin-bottom:14px;
+    box-shadow: inset 0 -1px 0 rgba(15,23,42,0.02);
+}
+.expression{font-size:13px;color:var(--muted);min-height:20px;word-break:break-all}
+.display{font-size:36px;font-weight:700;text-align:right;min-height:56px;line-height:1}
+
+.display small{display:block;color:var(--muted);font-size:12px}
+
+.keypad{display:flex;flex-direction:column;gap:var(--gap)}
+.row{display:flex;gap:var(--gap)}
+.row.bottom{margin-top:6px}
+
+.btn{
+    flex:1;
+    min-height:var(--btn-height);
+    padding:12px 12px;
+    border-radius:var(--btn-radius);
+    border:0;
+    background:transparent;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:transform .08s ease, box-shadow .12s ease, opacity .08s ease;
+    box-shadow: 0 3px 6px rgba(2,6,23,0.04);
+}
+.btn:active{transform:translateY(1px) scale(.997)}
+.btn:hover{box-shadow:0 6px 18px rgba(2,6,23,0.06)}
+.btn:focus{outline:3px solid rgba(37,99,235,0.12);outline-offset:2px}
+.btn.func{background:#f3f4f6;color:#111827}
+.btn.op{background:linear-gradient(180deg,var(--accent),#1e40af);color:white}
+.btn.equals{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;box-shadow:0 8px 24px rgba(37,99,235,0.18)}
+.btn.danger{background:#fee2e2;color:#991b1b}
+
+/* better spacing on small screens */
+@media (max-width:420px){
+    .calculator-card{width:100%;padding:14px}
+    .display{font-size:28px}
+    .btn{min-height:48px;font-size:15px}
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion:reduce){
+    .btn, .btn:hover, .btn:active{transition:none}
+}
+
+.history{width:260px;max-height:560px;background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:12px;overflow:auto}
+.history-header{font-weight:600;margin-bottom:8px}
+.history-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.history-list li{padding:8px;border-radius:8px;background:#fbfdff;font-size:14px;color:#0f172a}
+
+/* small icon button in headers */
+.icon-btn.small{font-size:12px;padding:6px 8px;border-radius:8px;background:transparent;border:0;color:var(--muted);cursor:pointer}
+.icon-btn.small:hover{color:var(--accent)}
+
+/* button press animation */
+.btn.btn-press{transform:translateY(1px) scale(.995);opacity:.95}
+
+/* display pulse when result computed */
+.display.pulse{animation:displayPulse .32s ease}
+@keyframes displayPulse{0%{transform:scale(1)}40%{transform:scale(1.02)}100%{transform:scale(1)}}
+
+/* history entry animation */
+.history-list li.new{animation:historyIn .36s cubic-bezier(.2,.9,.3,1)}
+@keyframes historyIn{0%{opacity:0;transform:translateY(-6px) scale(.995)}60%{opacity:1;transform:translateY(2px) scale(1.01)}100%{transform:translateY(0) scale(1)}}
+
+/* subtle hover for history items */
+.history-list li:hover{transform:translateX(4px);transition:transform .18s ease}
+
+/* Responsive */
+@media (max-width:900px){
+    .app-shell{padding:20px;gap:12px;flex-direction:column}
+    .history{width:100%}
+    .calculator-card{width:100%;max-width:560px}
+}
+
+/* Dark theme */
+/* Dark theme */
+body.dark{
+    --bg:#0b1220;
+    --card:#061026;
+    --muted:#94a3b8;
+    --accent:#60a5fa;
+    --accent-2:#34d399;
+    --surface-2:#083344;
+    color:#e6eef8;
+}
+body.dark .display-panel{background:linear-gradient(180deg,#051226,#071b2a)}
+body.dark .display{color:var(--text, #e6eef8)}
+/* ensure buttons remain visible on dark background */
+body.dark .btn{color:#e6eef8;background:rgba(255,255,255,0.02);box-shadow:0 4px 12px rgba(2,6,23,0.18)}
+body.dark .btn.func{background:#0f1724;color:#dbeafe}
+body.dark .btn.op{background:linear-gradient(90deg,#184e9b,#0b7285);color:#fff}
+body.dark .btn.equals{box-shadow:0 10px 30px rgba(37,99,235,0.22)}
+body.dark .history-list li{background:#071422;color:#dbeafe}
+body.dark .icon-btn.small{color:var(--muted)}
+/* make sure the theme toggle is visible in dark mode */
+body.dark .icon-btn{color:var(--muted);background:transparent}
+body.dark #themeToggle{color:#f8fafc;background:rgba(255,255,255,0.03);padding:6px;border-radius:8px}
+body.dark .header-controls{z-index:3}
+

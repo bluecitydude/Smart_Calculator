@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Calculator</title>
+        <link rel="stylesheet" href="assets/css/style.css">
+        <meta name="description" content="Sleek responsive calculator with memory, history and keyboard support">
+    </head>
+    <body>
+        <main class="app-shell">
+            <section class="calculator-card" role="application" aria-label="Calculator">
+                <header class="calc-header">
+                    <div class="brand">Calculator</div>
+                    <div class="header-controls">
+                        <button id="themeToggle" class="icon-btn" aria-label="Toggle theme">☼</button>
+                        <div id="memIndicator" class="mem-indicator" aria-hidden="true">M</div>
+                    </div>
+                </header>
+
+                <div class="display-panel">
+                    <div id="expression" class="expression" aria-live="polite"></div>
+                    <div id="display" class="display" role="status">0</div>
+                </div>
+
+                <section class="keypad" role="group" aria-label="Calculator keypad">
+                    <div class="row">
+                        <button class="btn func" data-action="mc">MC</button>
+                        <button class="btn func" data-action="mr">MR</button>
+                        <button class="btn func" data-action="mplus">M+</button>
+                        <button class="btn func" data-action="mminus">M-</button>
+                        <button class="btn func" data-action="clear">AC</button>
+                    </div>
+
+                    <div class="row">
+                        <button class="btn" data-action="sqrt">√</button>
+                        <button class="btn" data-action="recip">1/x</button>
+                        <button class="btn" data-action="percent">%</button>
+                        <button class="btn op" data-value="/">÷</button>
+                    </div>
+
+                    <div class="row">
+                        <button class="btn digit" data-value="7">7</button>
+                        <button class="btn digit" data-value="8">8</button>
+                        <button class="btn digit" data-value="9">9</button>
+                        <button class="btn op" data-value="*">×</button>
+                    </div>
+
+                    <div class="row">
+                        <button class="btn digit" data-value="4">4</button>
+                        <button class="btn digit" data-value="5">5</button>
+                        <button class="btn digit" data-value="6">6</button>
+                        <button class="btn op" data-value="-">−</button>
+                    </div>
+
+                    <div class="row">
+                        <button class="btn digit" data-value="1">1</button>
+                        <button class="btn digit" data-value="2">2</button>
+                        <button class="btn digit" data-value="3">3</button>
+                        <button class="btn op" data-value="+">+</button>
+                    </div>
+
+                    <div class="row">
+                        <button class="btn" data-action="neg">±</button>
+                        <button class="btn digit" data-value="0">0</button>
+                        <button class="btn" data-value=".">.</button>
+                        <button class="btn equals" data-action="equals">=</button>
+                    </div>
+
+                    <div class="row bottom">
+                        <button class="btn" data-action="del">DEL</button>
+                        <button class="btn" data-value="(">(</button>
+                        <button class="btn" data-value=")">)</button>
+                        <button class="btn op" data-value="^">^</button>
+                    </div>
+                </section>
+            </section>
+
+            <aside class="history" aria-label="History">
+                    <div class="history-header">History
+                        <button id="historyClear" class="icon-btn small" aria-label="Clear history">Clear</button>
+                    </div>
+                    <ul id="historyList" class="history-list"></ul>
+                </aside>
+        </main>
+
+        <script src="assets/js/script.js"></script>
+    </body>
+</html>
